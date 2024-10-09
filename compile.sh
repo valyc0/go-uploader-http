@@ -23,5 +23,14 @@ else
     exit 1
 fi
 
-echo "Compilazione terminata con successo!"
+# Compila per macOS
+echo "Compilazione per macOS..."
+GOOS=darwin GOARCH=amd64 go build -o ${OUTPUT_NAME}_mac main.go
+if [ $? -eq 0 ]; then
+    echo "Compilazione per macOS completata: ${OUTPUT_NAME}_mac"
+else
+    echo "Errore durante la compilazione per macOS"
+    exit 1
+fi
 
+echo "Compilazione terminata con successo!"
